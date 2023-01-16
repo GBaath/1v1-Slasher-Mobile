@@ -6,7 +6,17 @@ public class OpponentTranslator : MonoBehaviour
 {
     RectTransform localShieldRepresentation;
 
+    private void Start()
+    {
+        localShieldRepresentation = GetComponent<RectTransform>();
+    }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            UpdatePosition(Camera.main.ScreenToWorldPoint(GameManager.instance.opponentShield.GetComponent<RectTransform>().position));
+
+    }
     //get data from network and update local transform
     public void UpdatePosition(Vector2 opponentCanvasPosition)
     {

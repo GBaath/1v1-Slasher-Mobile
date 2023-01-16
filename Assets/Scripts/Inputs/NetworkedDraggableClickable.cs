@@ -9,7 +9,9 @@ public class NetworkedDraggableClickable : NetworkedClickableObject
     public void IsHolding(bool hold)
     {
         holding = hold;
+
         //when release update reference in servercanvas, then update local representation
+        GameManager.instance.serverCanvas.UpdateShieldReferencePosition(transform.root.GetComponent<PlayerData>().playerIndex, transform.position);
     }
     public void SetCenterOffsetFromClick()
     {
@@ -18,6 +20,7 @@ public class NetworkedDraggableClickable : NetworkedClickableObject
 
     private void Update()
     {
+        Debug.Log(IsOwner);
         if (holding && transform.root.GetComponent<PlayerData>().allowedToAct&&IsOwner)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)centerOffset;
