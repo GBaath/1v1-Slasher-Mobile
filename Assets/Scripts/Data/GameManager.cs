@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> players = new List<GameObject>();
     public ServerCanvas serverCanvas;
     public PlayerData localPlayer;
+    public NetworkBehaviour server;
 
 
     private void Awake()
@@ -28,7 +29,6 @@ public class GameManager : MonoBehaviour
         else if (pdata.playerIndex == 1)
             opponentShield = p1shield;
     }
-
     public void ResolveTurn()
     {
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class OpponentTranslator : MonoBehaviour
 {
@@ -13,8 +14,12 @@ public class OpponentTranslator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            UpdatePosition(Camera.main.ScreenToWorldPoint(GameManager.instance.opponentShield.GetComponent<RectTransform>().position));
+        if (Input.GetButtonDown("Jump"))    
+        {
+            UpdateRelativePosition(GameManager.instance.localPlayer.GetComponent<PlayerClient>().relativeShieldPosition);
+            Debug.Log(GameManager.instance.localPlayer.GetComponent<PlayerClient>().relativeShieldPosition.Value);
+        }
+            //UpdatePosition(Camera.main.ScreenToWorldPoint(GameManager.instance.opponentShield.GetComponent<RectTransform>().position));
 
     }
     //get data from network and update local transform
@@ -22,5 +27,9 @@ public class OpponentTranslator : MonoBehaviour
     {
         //todo screen to world point
         transform.position = new Vector2(localShieldRepresentation.position.x * -1, localShieldRepresentation.position.y);
+    }
+    public void UpdateRelativePosition(NetworkVariable<Vector2> relativeVector)
+    {
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector2(Camera.main.scaledPixelWidth * relativeVector.Value.x, Camera.main.scaledPixelHeight * relativeVector.Value.y)); //set opshield  to the relative screen point of opponentpos
     }
 }

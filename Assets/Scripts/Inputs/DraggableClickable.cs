@@ -22,7 +22,7 @@ public class DraggableClickable : ClickableObject
         holding = hold;
 
         //when release update reference in servercanvas, then update local representation
-        GameManager.instance.serverCanvas.UpdateShieldReferencePosition(GameManager.instance.localPlayer.playerIndex, Camera.main.WorldToScreenPoint(transform.position));
+        GameManager.instance.serverCanvas.UpdateShieldReferencePosition(GameManager.instance.localPlayer.playerIndex, (transform.position));
     }
     public void SetCenterOffsetFromClick()
     {

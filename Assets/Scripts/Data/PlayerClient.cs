@@ -5,6 +5,7 @@ using Unity.Netcode;
 
 public class PlayerClient : NetworkBehaviour
 {
+    public NetworkVariable<Vector2> relativeShieldPosition;
     private void Start()
     {
         OnPlayerJoin();

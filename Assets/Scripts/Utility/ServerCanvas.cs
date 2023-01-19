@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class ServerCanvas : MonoBehaviour
 {
@@ -9,10 +10,12 @@ public class ServerCanvas : MonoBehaviour
         switch (shieldIndex)
         {
             case 0:
-                GameManager.instance.p1shield.transform.position = Camera.main.ScreenToWorldPoint(newPos); //RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight)/50;//
+                GameManager.instance.p1shield.transform.position = (newPos); 
+                GameManager.instance.players[1].GetComponent<PlayerClient>().relativeShieldPosition = new NetworkVariable<Vector2>(RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight));
                 break;
             case 1:
-                GameManager.instance.p2shield.transform.position = Camera.main.ScreenToWorldPoint(newPos); //RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight)/50;//
+                GameManager.instance.p2shield.transform.position =(newPos);
+                GameManager.instance.players[0].GetComponent<PlayerClient>().relativeShieldPosition = new NetworkVariable<Vector2>(RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight));
                 break;
 
             default:
