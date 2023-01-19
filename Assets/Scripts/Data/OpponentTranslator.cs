@@ -16,9 +16,14 @@ public class OpponentTranslator : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))    
         {
-            UpdateRelativePosition(GameManager.instance.localPlayer.GetComponent<PlayerClient>().relativeShieldPosition);
+            UpdateRelativePosition(GameManager.instance.otherPlayer.client.localRelativeShieldPos);
             Debug.Log(GameManager.instance.localPlayer.GetComponent<PlayerClient>().relativeShieldPosition.Value);
         }
+        try
+        {
+
+        }
+        catch { }
             //UpdatePosition(Camera.main.ScreenToWorldPoint(GameManager.instance.opponentShield.GetComponent<RectTransform>().position));
 
     }
@@ -28,8 +33,8 @@ public class OpponentTranslator : MonoBehaviour
         //todo screen to world point
         transform.position = new Vector2(localShieldRepresentation.position.x * -1, localShieldRepresentation.position.y);
     }
-    public void UpdateRelativePosition(NetworkVariable<Vector2> relativeVector)
+    public void UpdateRelativePosition(Vector2 relativeVector)
     {
-        transform.position = Camera.main.ScreenToWorldPoint(new Vector2(Camera.main.scaledPixelWidth * relativeVector.Value.x, Camera.main.scaledPixelHeight * relativeVector.Value.y)); //set opshield  to the relative screen point of opponentpos
+        transform.position = Camera.main.ScreenToWorldPoint(new Vector2(Camera.main.scaledPixelWidth * relativeVector.x, Camera.main.scaledPixelHeight * relativeVector.y)); //set opshield  to the relative screen point of opponentpos
     }
 }

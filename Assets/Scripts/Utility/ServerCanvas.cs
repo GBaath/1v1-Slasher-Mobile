@@ -10,12 +10,18 @@ public class ServerCanvas : MonoBehaviour
         switch (shieldIndex)
         {
             case 0:
-                GameManager.instance.p1shield.transform.position = (newPos); 
-                GameManager.instance.players[1].GetComponent<PlayerClient>().relativeShieldPosition = new NetworkVariable<Vector2>(RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight));
+                GameManager.instance.p1shield.transform.position = (newPos);
+                GameManager.instance.localPlayer.client.relativeShieldPosition.Value = RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight);
+                //GameManager.instance.players[1].GetComponent<PlayerClient>().relativeShieldPosition = 
+                //  new NetworkVariable<Vector2>(RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight));
+                Debug.Log(GameManager.instance.players[1].GetComponent<PlayerClient>().relativeShieldPosition.Value);
                 break;
             case 1:
                 GameManager.instance.p2shield.transform.position =(newPos);
-                GameManager.instance.players[0].GetComponent<PlayerClient>().relativeShieldPosition = new NetworkVariable<Vector2>(RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight));
+                GameManager.instance.localPlayer.client.relativeShieldPosition.Value = RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight);
+                //GameManager.instance.players[0].GetComponent<PlayerClient>().relativeShieldPosition = 
+                //    new NetworkVariable<Vector2>(RelativeScreenPos(newPos.x / Camera.main.scaledPixelWidth, newPos.y / Camera.main.scaledPixelHeight));
+                Debug.Log(GameManager.instance.players[0].GetComponent<PlayerClient>().relativeShieldPosition.Value);
                 break;
 
             default:

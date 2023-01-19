@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public DraggableClickable localShieldReference;
     public List<GameObject> players = new List<GameObject>();
     public ServerCanvas serverCanvas;
-    public PlayerData localPlayer;
+    public PlayerData localPlayer,otherPlayer;
     public NetworkBehaviour server;
 
 
@@ -43,6 +43,11 @@ public class GameManager : MonoBehaviour
         {
             localPlayer = joinedData;
             
+        }
+        //spaghett
+        if(nrofPlayers == 2)
+        {
+            otherPlayer = players[0].GetComponent<PlayerData>();
         }
 
 
