@@ -44,11 +44,6 @@ public class GameManager : MonoBehaviour
             localPlayer = joinedData;
             
         }
-        //spaghett
-        if(nrofPlayers == 2)
-        {
-            otherPlayer = players[0].GetComponent<PlayerData>();
-        }
 
 
         //aids
@@ -59,6 +54,13 @@ public class GameManager : MonoBehaviour
 
             SetOpponentShieldReference(players[0].GetComponent<PlayerData>());
             SetOpponentShieldReference(players[1].GetComponent<PlayerData>());
+
+
+            //other p reference set
+            if (localPlayer.playerIndex == 0)
+                otherPlayer = players[1].GetComponent<PlayerData>();
+            else
+                otherPlayer = players[0].GetComponent<PlayerData>();
         }
     }
 }

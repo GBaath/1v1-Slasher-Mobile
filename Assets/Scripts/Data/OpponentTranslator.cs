@@ -16,7 +16,7 @@ public class OpponentTranslator : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))    
         {
-            UpdateRelativePosition(GameManager.instance.otherPlayer.client.localRelativeShieldPos);
+            UpdatePosition(GameManager.instance.otherPlayer.transform.position);
         }
         try
         {
@@ -30,7 +30,7 @@ public class OpponentTranslator : MonoBehaviour
     public void UpdatePosition(Vector2 opponentCanvasPosition)
     {
         //todo screen to world point
-        transform.position = new Vector2(localShieldRepresentation.position.x * -1, localShieldRepresentation.position.y);
+        transform.position = new Vector3(opponentCanvasPosition.x * -1, opponentCanvasPosition.y,Camera.main.nearClipPlane);
     }
     public void UpdateRelativePosition(Vector2 relativeVector)
     {
