@@ -48,7 +48,7 @@ public class SlashFollow : MonoBehaviour
 
     public void CheckHit()
     {
-        //raycast from start to end, check collide with opponentreference collider
+        //raycast from start to end, check collide with opponentreference collider //TODO start & end y -= offsetdifference
         if(Physics2D.Linecast(startPoint, endPoint).collider == opponentShieldRef)
         {
             //missed
@@ -60,4 +60,7 @@ public class SlashFollow : MonoBehaviour
             //dmg to opponent
         }
     }
+
+    //TODO function to reverse enemyslash to animate
+    //animation for attack
 }
