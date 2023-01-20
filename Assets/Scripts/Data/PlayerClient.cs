@@ -21,6 +21,8 @@ public class PlayerClient : NetworkBehaviour
     {
         GameManager.instance.OnPlayerJoin(GetComponent<PlayerData>());
         transform.parent = GameManager.instance.serverCanvas.transform;
+        transform.position = Vector3.zero;
+        transform.position += Vector3.forward*Camera.main.nearClipPlane;
     }
 
 }

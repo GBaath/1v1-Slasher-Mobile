@@ -26,14 +26,15 @@ public class DraggableClickable : ClickableObject
     }
     public void SetCenterOffsetFromClick()
     {
-        centerOffset = transform.position-(Input.mousePosition);
+        centerOffset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void Update()
     {
         if (holding)
         {
-            transform.position = (Input.mousePosition) + (Vector3)centerOffset;
+            transform.position = (Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)centerOffset);
+            transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.nearClipPlane);
         }
     }
 }

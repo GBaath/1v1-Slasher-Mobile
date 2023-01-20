@@ -17,7 +17,6 @@ public class OpponentTranslator : MonoBehaviour
         if (Input.GetButtonDown("Jump"))    
         {
             UpdateRelativePosition(GameManager.instance.otherPlayer.client.localRelativeShieldPos);
-            Debug.Log(GameManager.instance.localPlayer.GetComponent<PlayerClient>().relativeShieldPosition.Value);
         }
         try
         {
