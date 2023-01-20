@@ -8,6 +8,6 @@ public class SceneHandler : MonoBehaviour
 
     public void SetScene(int sceneIndex)
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneAt(sceneIndex));
+        SceneManager.LoadScene(sceneIndex);
     }
 }
