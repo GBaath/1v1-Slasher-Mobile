@@ -12,6 +12,8 @@ public class SlashFollow : MonoBehaviour
     public Collider2D opponentShieldRef;
 
     bool follow;
+
+    public bool hit;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -30,7 +32,19 @@ public class SlashFollow : MonoBehaviour
             endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             endPoint = new Vector3(endPoint.x, endPoint.y, Camera.main.nearClipPlane);
             ToggleFollow(false);
-            CheckHit();
+            try
+            {
+                GameManager.instance.localPlayer.slashStart.Value = startPoint;
+                GameManager.instance.localPlayer.slashEnd.Value = endPoint;
+            }
+            catch 
+            {
+
+            }
+            endPoint = Vector3.zero;
+            startPoint = Vector3.zero;
+
+            //CheckHit();
         }
         if (follow)
         {
@@ -46,17 +60,19 @@ public class SlashFollow : MonoBehaviour
         line.enabled = enable;
     }
 
-    public void CheckHit()
+    public bool CheckHit()
     {
         //raycast from start to end, check collide with opponentreference collider //TODO start & end y -= offsetdifference
         if(Physics2D.Linecast(startPoint, endPoint).collider == opponentShieldRef)
         {
             //missed
             Debug.Log("Shield");
+            return false;
         }
         else
         {
             //hit
+            return true;
             //dmg to opponent
         }
     }

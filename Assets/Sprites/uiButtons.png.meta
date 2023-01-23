@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28447205902b1db47b2789c7497212c0
+guid: b5319b76b2f05314790c26f85aaed63c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,14 +45,14 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.12492652, y: 0.3424456}
-  spritePixelsToUnits: 10
-  spriteBorder: {x: 0, y: 0, z: 96, w: 17}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -117,13 +117,76 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: protagonist_0
+      name: uiButtons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 53
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f3c490819d4024188c01f53b8e4798
+      internalID: -1809555006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiButtons_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 53
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 943d150ac38bd0540bc7dc91bba681de
+      internalID: -1157467462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiButtons_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 53
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0610bf689f74fa5458bea6a85888ab46
+      internalID: 2127830725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiButtons_3
       rect:
         serializedVersion: 2
         x: 3
-        y: 0
-        width: 26
-        height: 64
+        y: 35
+        width: 7
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be54fb3c122244f49807e2670defa163
-      internalID: 1715055907
+      spriteID: 88b83786d6f2f8f4cb698c8615b07ba7
+      internalID: 413841672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: protagonist_1
+      name: uiButtons_4
       rect:
         serializedVersion: 2
-        x: 34
-        y: 0
-        width: 27.25
-        height: 64
+        x: 0
+        y: 36
+        width: 3
+        height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,77 +215,94 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bac697a665760d84c83808e9b8dc3593
-      internalID: -591286242
+      spriteID: 432b1071c6fcec04c98e30eaefa0c08d
+      internalID: 494170330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: protagonist_2
+      name: uiButtons_5
       rect:
         serializedVersion: 2
-        x: 65
-        y: 0
-        width: 27.25
-        height: 64
+        x: 0
+        y: 42
+        width: 18
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b268d1bbf0a842440a11a688e492bd47
-      internalID: -102413106
+      spriteID: af6c757f97fde284b8c12f25fcdf09df
+      internalID: 1310021819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: protagonist_3
+      name: uiButtons_6
       rect:
         serializedVersion: 2
-        x: 99
-        y: 0
-        width: 27
-        height: 64
+        x: 18
+        y: 42
+        width: 18
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbab778b19f2cfa41814ed57ae0db20c
-      internalID: 11632193
+      spriteID: 3a3de4bfd8778b14887d93744efd89d5
+      internalID: -1533366234
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline:
-    - - {x: -64, y: -32}
-      - {x: -64, y: 15}
-      - {x: -33, y: 15}
-      - {x: -33, y: -32}
-    physicsShape:
-    - - {x: -64, y: -32}
-      - {x: -64, y: 15}
-      - {x: -32, y: 15}
-      - {x: -32, y: -32}
+    - serializedVersion: 2
+      name: uiButtons_7
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 42
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7abac2771f6793a4cb2c36be039d3443
+      internalID: 1690431766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      protagonist_3: 11632193
-      protagonist_1: -591286242
-      protagonist_0: 1715055907
-      protagonist_2: -102413106
+      uiButtons_4: 494170330
+      uiButtons_2: 2127830725
+      uiButtons_6: -1533366234
+      uiButtons_3: 413841672
+      uiButtons_0: -1809555006
+      uiButtons_7: 1690431766
+      uiButtons_1: -1157467462
+      uiButtons_5: 1310021819
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

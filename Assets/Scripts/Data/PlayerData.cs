@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerData : MonoBehaviour
+public class PlayerData : NetworkBehaviour
 {
     public PlayerClient client;
 
-    public LayerMask player1Mask, player2Mask;
+    public NetworkVariable<Vector2> slashStart = new NetworkVariable<Vector2>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<Vector2> slashEnd = new NetworkVariable<Vector2>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-    public Vector2 shieldPos;
-    public Vector2 slashStart, slashEnd;
-
-    public int hp;
+    public NetworkVariable<int> hp =  new NetworkVariable<int>(default,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
+    public NetworkVariable<int> maxHp = new NetworkVariable<int>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<int> dmg = new NetworkVariable<int>(default,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
     public int playerIndex;
+
+    public NetworkVariable<bool> finishedTurn =  new NetworkVariable<bool>(default,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
 
     private bool _allowedToAct = true;
     public bool allowedToAct
@@ -26,21 +29,21 @@ public class PlayerData : MonoBehaviour
     }
     private void Start()
     {
-        //if(playerIndex == 0)
-        //{
-        //    GetComponent<Camera>().cullingMask = player1Mask;
-        //    //GetComponentInChildren<NetworkedDraggableClickable>().gameObject.layer = 6; // set local layers so dosent get seen by other
-        //    //GetComponentInChildren<OpponentTranslator>().gameObject.layer = 6;
-        //    GameManager.instance.opponentShield = GameManager.instance.p2shield; //set local shield position reference to the other player shield
-        //}
-        //else
-        //{
-        //    GetComponent<Camera>().cullingMask = player2Mask;
-        //    //GetComponentInChildren<NetworkedDraggableClickable>().gameObject.layer = 7;
-        //    //GetComponentInChildren<OpponentTranslator>().gameObject.layer = 7;
-        //    GameManager.instance.opponentShield = GameManager.instance.p1shield;
-        //}
+        hp.Value = maxHp.Value;
 
             
+    }
+    public void SetHp(int hp)
+    {
+        this.hp.Value = hp;
+        if (this.hp.Value <= 0)
+        {
+            GameOver();
+        }
+    }
+    public void GameOver()
+    {
+        //send player index
+        //other win
     }
 }

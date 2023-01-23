@@ -30,7 +30,7 @@ public class OpponentTranslator : MonoBehaviour
     public void UpdatePosition(Vector2 opponentCanvasPosition)
     {
         //todo screen to world point
-        transform.position = new Vector3(opponentCanvasPosition.x * -1, opponentCanvasPosition.y,Camera.main.nearClipPlane); //y + playersprite y offset (difference between opponent sprite and self sprite)
+        transform.position = new Vector3(opponentCanvasPosition.x * -1, opponentCanvasPosition.y +60/Camera.main.scaledPixelHeight ,Camera.main.nearClipPlane); //y + playersprite y offset (difference between opponent sprite and self sprite)
     }
     public void UpdateRelativePosition(Vector2 relativeVector)
     {

@@ -28,5 +28,10 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler,IPointerDownH
     public void SetClickable(bool clickable)
     {
         this.clickable = clickable;
+
+        if (clickable)
+            GetComponent<Image>().color = Color.white;
+        else
+            GetComponent<Image>().color = new Color(255, 255, 255, 100);
     }
 }

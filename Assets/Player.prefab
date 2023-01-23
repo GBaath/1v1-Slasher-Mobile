@@ -18,7 +18,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player
   m_TagString: MainCamera
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -55,17 +55,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   client: {fileID: 8832674373481894174}
-  player1Mask:
-    serializedVersion: 2
-    m_Bits: 119
-  player2Mask:
-    serializedVersion: 2
-    m_Bits: 183
-  shieldPos: {x: 0, y: 0}
-  slashStart: {x: 0, y: 0}
-  slashEnd: {x: 0, y: 0}
-  hp: 0
+  slashStart:
+    m_InternalValue: {x: 0, y: 0}
+  slashEnd:
+    m_InternalValue: {x: 0, y: 0}
+  hp:
+    m_InternalValue: 0
+  maxHp:
+    m_InternalValue: 0
+  dmg:
+    m_InternalValue: 0
   playerIndex: 0
+  finishedTurn:
+    m_InternalValue: 0
 --- !u!114 &8052597570332981297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relativeShieldPosition:
     m_InternalValue: {x: 0, y: 0}
-  localRelativeShieldPos: {x: 0, y: 0}
 --- !u!222 &2658095887453716981
 CanvasRenderer:
   m_ObjectHideFlags: 0
