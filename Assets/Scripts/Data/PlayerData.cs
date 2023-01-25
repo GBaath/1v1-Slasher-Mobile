@@ -16,17 +16,8 @@ public class PlayerData : NetworkBehaviour
     public int playerIndex;
 
     public NetworkVariable<bool> finishedTurn =  new NetworkVariable<bool>(default,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
+    public NetworkVariable<bool> hit = new NetworkVariable<bool>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
-    private bool _allowedToAct = true;
-    public bool allowedToAct
-    {
-        get { return _allowedToAct; }
-        set
-        {
-            _allowedToAct = value;
-
-        }
-    }
     private void Start()
     {
         hp.Value = maxHp.Value;

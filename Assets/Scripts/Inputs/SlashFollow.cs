@@ -67,11 +67,13 @@ public class SlashFollow : MonoBehaviour
         {
             //missed
             Debug.Log("Shield");
+            GameManager.instance.localPlayer.hit.Value = false;
             return false;
         }
         else
         {
             //hit
+            GameManager.instance.localPlayer.hit.Value = true;
             return true;
             //dmg to opponent
         }

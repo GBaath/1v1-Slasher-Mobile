@@ -7,22 +7,24 @@ using UnityEngine.Events;
 
 public class ClickableObject : MonoBehaviour, IPointerClickHandler,IPointerDownHandler,IPointerUpHandler
 {
-    public UnityEvent press,release;
+    public UnityEvent press,release,click;
     public bool clickable = false;
     public void OnPointerClick(PointerEventData eventData)
     {
         if (clickable)
         {
-
+            click.Invoke();
         }
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        press.Invoke();
+        if (clickable)
+            press.Invoke();
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        release.Invoke();
+        if (clickable)
+            release.Invoke();
     }
 
     public void SetClickable(bool clickable)

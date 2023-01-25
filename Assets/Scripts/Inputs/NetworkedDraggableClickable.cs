@@ -20,8 +20,7 @@ public class NetworkedDraggableClickable : NetworkedClickableObject
 
     private void Update()
     {
-        Debug.Log(IsOwner);
-        if (holding && transform.root.GetComponent<PlayerData>().allowedToAct&&IsOwner)
+        if (holding & !transform.root.GetComponent<PlayerData>().finishedTurn.Value && IsOwner)
         {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)centerOffset;
         }

@@ -15,6 +15,7 @@ public class DraggableClickable : ClickableObject
     private void OnStart()
     {
         localPlayer = GameManager.instance.localPlayer;
+        clickable = true;
     }
 
     public void IsHolding(bool hold)
