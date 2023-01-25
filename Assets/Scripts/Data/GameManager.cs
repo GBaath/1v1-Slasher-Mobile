@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public PlayerData localPlayer,otherPlayer;
     public Server server;
 
+    [SerializeField] ClickableObject turnButton;
+
     [SerializeField] GameObject mainCanvas, waitingText;
 
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     }
     public void FinishTurn()
     {
+        localPlayer.finishedTurn.Value = true;
         server.CheckEndTurnServerRpc();
     }
     public void OnPlayerJoin(PlayerData joinedData)
@@ -58,6 +61,17 @@ public class GameManager : MonoBehaviour
 
             mainCanvas.SetActive(true);
             waitingText.SetActive(false);
+
+
+            //set endturn button clickable when slash end gets a value
+            localPlayer.slashEnd.OnValueChanged += (_old, _new) =>
+            {
+                turnButton.SetClickable(true);
+            };
+            otherPlayer.slashEnd.OnValueChanged += (_old, _new) =>
+            {
+                turnButton.SetClickable(true);
+            };
         }
     }
 }

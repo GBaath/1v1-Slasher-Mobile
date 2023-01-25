@@ -60,13 +60,12 @@ public class SlashFollow : MonoBehaviour
         line.enabled = enable;
     }
 
-    public bool CheckHit()
+    public bool CheckHit(Vector3 start, Vector3 end)
     {
         //raycast from start to end, check collide with opponentreference collider //TODO start & end y -= offsetdifference
-        if(Physics2D.Linecast(startPoint, endPoint).collider == opponentShieldRef)
+        if(Physics2D.Linecast(start, end).collider == opponentShieldRef)
         {
             //missed
-            Debug.Log("Shield");
             GameManager.instance.localPlayer.hit.Value = false;
             return false;
         }

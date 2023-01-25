@@ -235,6 +235,7 @@ MonoBehaviour:
   localPlayer: {fileID: 0}
   otherPlayer: {fileID: 0}
   server: {fileID: 582746342}
+  turnButton: {fileID: 450803417}
   mainCanvas: {fileID: 55181739}
   waitingText: {fileID: 1497815780}
 --- !u!114 &19207949
@@ -954,21 +955,6 @@ MonoBehaviour:
   release:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 450803418}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_sprite
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: -1157467462, guid: b5319b76b2f05314790c26f85aaed63c, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  click:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 19207948}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: FinishTurn
@@ -976,6 +962,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 450803418}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: -1157467462, guid: b5319b76b2f05314790c26f85aaed63c, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -993,6 +991,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  click:
+    m_PersistentCalls:
+      m_Calls: []
   clickable: 0
 --- !u!114 &450803418
 MonoBehaviour:
