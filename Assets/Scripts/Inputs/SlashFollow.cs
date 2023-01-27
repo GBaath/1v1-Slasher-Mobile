@@ -6,7 +6,7 @@ public class SlashFollow : MonoBehaviour
 {
     [SerializeField] LineRenderer line;
     [SerializeField] RectTransform slashInputRect;
-    Vector3 startPoint, endPoint;
+    [SerializeField]Vector3 startPoint, endPoint;
 
 
     public Collider2D opponentShieldRef;
@@ -32,15 +32,10 @@ public class SlashFollow : MonoBehaviour
             endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             endPoint = new Vector3(endPoint.x, endPoint.y, Camera.main.nearClipPlane);
             ToggleFollow(false);
-            try
-            {
-                GameManager.instance.localPlayer.slashStart.Value = startPoint;
-                GameManager.instance.localPlayer.slashEnd.Value = endPoint;
-            }
-            catch 
-            {
 
-            }
+            GameManager.instance.localPlayer.slashStart.Value = line.GetPosition(0);
+            GameManager.instance.localPlayer.slashEnd.Value = line.GetPosition(1);
+
             endPoint = Vector3.zero;
             startPoint = Vector3.zero;
 

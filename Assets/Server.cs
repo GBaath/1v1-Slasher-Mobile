@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;using Unity.Netcode;
+using UnityEngine.UI;
 
 public class Server : NetworkBehaviour
 {
@@ -29,7 +30,8 @@ public class Server : NetworkBehaviour
             GameManager.instance.localPlayer.SetHp(GameManager.instance.localPlayer.hp.Value - GameManager.instance.otherPlayer.dmg.Value);
         }
         //show opponent slash
-        GameManager.instance.opponentSword.Draw(Camera.main.ScreenToWorldPoint(GameManager.instance.otherPlayer.slashStart.Value), Camera.main.ScreenToWorldPoint(GameManager.instance.otherPlayer.slashEnd.Value), 1);
+        //TODO ALL THSI SHIT NEEDS REFERENCESCALING TOO
+        GameManager.instance.opponentSword.Draw();
 
         //sync variables
 

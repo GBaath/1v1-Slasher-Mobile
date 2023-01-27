@@ -4,30 +4,63 @@ using UnityEngine;
 
 public class OpponentSword : MonoBehaviour
 {
-    [SerializeField]TrailRenderer swordTrail;
+    private LineRenderer line;
+    [SerializeField]private Vector3 start, end;
 
     private void Start()
     {
-        Invoke("OnStart",1);
+        line = GetComponent<LineRenderer>();
+        //Invoke("OnStart",1);
+
+        GameManager.instance.otherPlayer.slashStart.OnValueChanged += (_old, _new) =>
+        {
+            if (!GameManager.instance.otherPlayer.finishedTurn.Value)
+            {
+                start = _new;
+                start = new Vector3(-start.x, start.y, start.z);
+            }
+        };
+        GameManager.instance.otherPlayer.slashEnd.OnValueChanged += (_old, _new) =>
+        {
+            if (!GameManager.instance.otherPlayer.finishedTurn.Value)
+            {
+                end = _new;
+                end = new Vector3(-end.x, end.y, end.z);
+            }
+        };
+    }
+    private void Update()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            GameManager.instance.opponentSword.Draw();
+           
+        }
     }
     public void OnStart()
     {
         //Draw(new Vector3(-100, 100, 0), new Vector3(100, -100), 5);
     }
-    public void Draw(Vector3 start, Vector3  end, float time)
+    public void Draw()
     {
-        Debug.Log("Draw");
-        StartCoroutine(LerpPosition(start, end, time));
+        start += Vector3.forward * Camera.main.nearClipPlane;
+        end += Vector3.forward * Camera.main.nearClipPlane;
+        StartCoroutine(ShowSlash(start, end, 1));
     }
-    private IEnumerator LerpPosition(Vector3 startPosition, Vector3 targetPosition, float duration)
+    private IEnumerator ShowSlash(Vector3 startPosition, Vector3 targetPosition, float duration)
     {
+        line.SetPosition(0, startPosition);
+        line.SetPosition(1, targetPosition);
         float time = 0;
         while (time < duration)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            //transform.localPosition = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            line.startColor = Color.Lerp(Color.red, Color.clear, time/duration);
+            line.endColor = Color.Lerp(Color.red, Color.clear, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
-        transform.position = targetPosition;
+        line.startColor = Color.clear;
+        line.endColor = Color.clear;
     }
 }

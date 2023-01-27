@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] ClickableObject turnButton;
 
-    [SerializeField] GameObject mainCanvas, waitingText;
+    [SerializeField] public GameObject mainCanvas, waitingText;
 
 
     private void Awake()
@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
             otherPlayer.slashEnd.OnValueChanged += (_old, _new) =>
             {
                 turnButton.SetClickable(true);
+                Debug.Log(_old);
+                Debug.Log(_new);
             };
         }
     }
