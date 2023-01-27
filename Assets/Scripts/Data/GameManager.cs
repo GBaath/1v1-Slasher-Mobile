@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour
                 Debug.Log(_old);
                 Debug.Log(_new);
             };
+            localPlayer.finishedTurn.OnValueChanged += (_old, _new) =>
+            {
+                server.CheckEndTurnServerRpc();
+            };
         }
     }
 }
