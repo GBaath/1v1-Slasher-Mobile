@@ -20,9 +20,19 @@ public class PlayerData : NetworkBehaviour
 
     private void Start()
     {
-        hp.Value = maxHp.Value;
-
+        if (IsOwner)
+        {
+            maxHp.Value = 5;
+            dmg.Value = 1;
+            hp.Value = maxHp.Value;
+            GameManager.instance.localHpSlider.maxValue = maxHp.Value;     
             
+            hp.OnValueChanged += (_old, _new) =>
+            {
+               GameManager.instance.localHpSlider.value = _new;
+                Debug.Log(_new);
+            };    
+        }
     }
     public void SetHp(int hp)
     {
@@ -34,7 +44,8 @@ public class PlayerData : NetworkBehaviour
     }
     public void GameOver()
     {
-        //send player index
-        //other win
+        //other win //will be incorrect if matchdraw
+        FirebaseSyncing.instance.SetWinningPlayerName(GameManager.instance.opName);
+        GameManager.instance.GameLose();
     }
 }

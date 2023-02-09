@@ -9,44 +9,47 @@ public class SlashFollow : MonoBehaviour
     [SerializeField]Vector3 startPoint, endPoint;
 
 
-    public Collider2D opponentShieldRef;
+    public Collider2D localShieldRef;
 
     bool follow;
 
     public bool hit;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!GameManager.instance.localPlayer.finishedTurn.Value)
         {
-            startPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            startPoint = new Vector3(startPoint.x, startPoint.y, Camera.main.nearClipPlane);
-
-            //if (slashInputRect.rect.Contains(Input.mousePosition)) //touch within acceptable area
+            if (Input.GetMouseButtonDown(0))
             {
-                line.SetPosition(0, startPoint);
-                ToggleFollow(true);
+                startPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                startPoint = new Vector3(startPoint.x, startPoint.y, Camera.main.nearClipPlane);
+
+                //if (slashInputRect.rect.Contains(Input.mousePosition)) //touch within acceptable area
+                {
+                    line.SetPosition(0, startPoint);
+                    ToggleFollow(true);
+                }
             }
-        }
-        else if(Input.GetMouseButtonUp(0))
-        {
-            endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            endPoint = new Vector3(endPoint.x, endPoint.y, Camera.main.nearClipPlane);
-            ToggleFollow(false);
+            else if(Input.GetMouseButtonUp(0))
+            {
+                endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                endPoint = new Vector3(endPoint.x, endPoint.y, Camera.main.nearClipPlane);
+                ToggleFollow(false);
 
-            GameManager.instance.localPlayer.slashStart.Value = line.GetPosition(0);
-            GameManager.instance.localPlayer.slashEnd.Value = line.GetPosition(1);
+                GameManager.instance.localPlayer.slashStart.Value = line.GetPosition(0);
+                GameManager.instance.localPlayer.slashEnd.Value = line.GetPosition(1);
 
-            endPoint = Vector3.zero;
-            startPoint = Vector3.zero;
+                endPoint = Vector3.zero;
+                startPoint = Vector3.zero;
 
-            //CheckHit();
-        }
-        if (follow)
-        {
-            //transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            endPoint = new Vector3(endPoint.x, endPoint.y, Camera.main.nearClipPlane);
-            line.SetPosition(1, endPoint);
+                //CheckHit();
+            }
+            if (follow)
+            {
+                //transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                endPoint = new Vector3(endPoint.x, endPoint.y, Camera.main.nearClipPlane);
+                line.SetPosition(1, endPoint);
+            }
         }
     }
     public void ToggleFollow(bool enable)
@@ -58,16 +61,16 @@ public class SlashFollow : MonoBehaviour
     public bool CheckHit(Vector3 start, Vector3 end)
     {
         //raycast from start to end, check collide with opponentreference collider //TODO start & end y -= offsetdifference
-        if(Physics2D.Linecast(start, end).collider == opponentShieldRef)
+        if(Physics2D.Linecast(start, end).collider == localShieldRef)
         {
             //missed
-            GameManager.instance.localPlayer.hit.Value = false;
+           // GameManager.instance.otherPlayer.hit.Value = false;
             return false;
         }
         else
         {
             //hit
-            GameManager.instance.localPlayer.hit.Value = true;
+            //GameManager.instance.otherPlayer.hit.Value = true;
             return true;
             //dmg to opponent
         }

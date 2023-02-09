@@ -5,7 +5,7 @@ using UnityEngine;
 public class OpponentSword : MonoBehaviour
 {
     private LineRenderer line;
-    [SerializeField]private Vector3 start, end;
+    public Vector3 start, end;
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class OpponentSword : MonoBehaviour
             if (!GameManager.instance.otherPlayer.finishedTurn.Value)
             {
                 start = _new;
-                start = new Vector3(-start.x, start.y-2.3f, start.z); //magic mumber from difference between player shadow and opponent input
+                start = new Vector3(-start.x, start.y, start.z); //magic mumber from difference between player shadow and opponent input
             }
         };
         GameManager.instance.otherPlayer.slashEnd.OnValueChanged += (_old, _new) =>
@@ -25,17 +25,9 @@ public class OpponentSword : MonoBehaviour
             if (!GameManager.instance.otherPlayer.finishedTurn.Value)
             {
                 end = _new;
-                end = new Vector3(-end.x, end.y-2.3f, end.z);
+                end = new Vector3(-end.x, end.y, end.z);
             }
         };
-    }
-    private void Update()
-    {
-        if (Input.GetButtonDown("Jump"))
-        {
-            GameManager.instance.opponentSword.Draw();
-           
-        }
     }
     public void OnStart()
     {

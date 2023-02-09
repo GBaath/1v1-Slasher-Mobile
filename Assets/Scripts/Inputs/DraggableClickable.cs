@@ -32,7 +32,7 @@ public class DraggableClickable : ClickableObject
 
     private void Update()
     {
-        if (holding)
+        if (holding&!GameManager.instance.localPlayer.finishedTurn.Value)
         {
             transform.position = (Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) + (Vector3)centerOffset);
             transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.nearClipPlane);
